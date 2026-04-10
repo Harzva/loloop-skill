@@ -22,6 +22,23 @@ The goal is to make `/loop` more durable for engineering or paper iteration by f
 - post-iteration review
 - recursive handoff into the next loop
 
+## Current product shape
+
+Current `loloop` is a **skill package**, not a native slash command.
+
+So the current practical usage is:
+
+- tell the agent to use `loloop`
+- let `loloop` generate the next `/loop` handoff
+
+The intended future product shape is:
+
+```text
+/loloop 30min ...
+```
+
+where `/loloop` would internally orchestrate the official `/loop`.
+
 ## Package contents
 
 - `SKILL.md`
@@ -48,8 +65,19 @@ The goal is to make `/loop` more durable for engineering or paper iteration by f
 
 ## Example usage
 
+### Current skill-style usage
+
 ```text
 请使用 loloop，基于 .claude/plans/loloop/active-loloop-validation-plan-v1.md 启动一次迭代。
+先读取最近的 evolution 记录；
+完成一轮最小可验证推进；
+最后写 evolution note，并给出下一轮 /loop handoff。
+```
+
+### Intended future command-style usage
+
+```text
+/loloop 30min 基于 .claude/plans/loloop/active-loloop-validation-plan-v1.md 启动一次迭代；
 先读取最近的 evolution 记录；
 完成一轮最小可验证推进；
 最后写 evolution note，并给出下一轮 /loop handoff。

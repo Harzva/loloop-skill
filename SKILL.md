@@ -9,6 +9,7 @@ description: Use when a task should advance through repeated plan-driven loop cy
 
 It does not replace the official `/loop`.
 It packages your repo's `loop in loop` method around it.
+At the current stage it is a **skill**, not a built-in slash command.
 
 ## When to use
 
@@ -29,6 +30,18 @@ Use this skill when the user wants any of these:
 3. Record what changed, what failed, and what remains.
 4. If the plan is complete, write the next versioned plan.
 5. End with an explicit next `/loop` handoff so the process can recurse.
+
+## Invocation model
+
+Current form:
+
+- ask the agent to use `loloop`
+- let `loloop` generate or refine the next `/loop` handoff
+
+Intended future form:
+
+- provide a dedicated `/loloop ...` command
+- let that command wrap the official `/loop`
 
 ## Files and conventions
 
@@ -81,4 +94,3 @@ Each iteration should include explicit review checkpoints:
 - continue the same plan if unfinished
 - draft the next plan if the current plan is complete
 - always finish with the next `/loop` handoff
-
