@@ -26,5 +26,18 @@ The validation run used `loloop` to improve and validate its own workspace layou
 ## Remaining work
 
 - run at least one more test on a non-self-referential task
-- decide whether to publish as a separate repository or as a folder in the current repo
+- keep validating the 100+ round stress-test pattern with a cheap micro-task plan
 
+## Long-run method decision
+
+For 100 or more quick iterations, the best current usage pattern is:
+
+```text
+/loop 30min 请使用 loloop ...
+```
+
+Reason:
+
+- `/loop` provides the outer repetition
+- `loloop` provides the plan/review discipline
+- direct `loloop` invocation alone is better for one-off manual passes

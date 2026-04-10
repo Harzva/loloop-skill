@@ -74,6 +74,23 @@ where `/loloop` would internally orchestrate the official `/loop`.
 最后写 evolution note，并给出下一轮 /loop handoff。
 ```
 
+This is best for one manual pass or one local validation round.
+
+### Current long-run stress-test usage
+
+```text
+/loop 30min 请使用 loloop，基于 .claude/plans/loloop/active-loloop-fast-iteration-benchmark-v1.md 启动一次迭代；
+先读取最近的 evolution 记录；
+完成一轮最小可验证推进；
+最后写 evolution note，并给出下一轮 /loop handoff。
+```
+
+This is the best current method for 100+ quick iterations because:
+
+- `/loop` keeps the outer recursion alive
+- `loloop` keeps each round anchored on one plan
+- each round can stay very small without losing continuity
+
 ### Intended future command-style usage
 
 ```text
@@ -87,6 +104,15 @@ where `/loloop` would internally orchestrate the official `/loop`.
 
 This package has already passed one self-hosted forward-test inside `learn-likecc`.
 See `TEST-RESULT.md` for the result summary.
+
+It has also been reviewed for long-run suitability:
+
+- recommended current pattern for 100+ rounds:
+  - `/loop ... 请使用 loloop ...`
+- recommended per-round unit:
+  - one tiny checklist item or one tiny verification step
+- ideal future UX:
+  - native `/loloop ...`
 
 ## Experiment log
 
